@@ -108,7 +108,13 @@ int main(void)
     LED1(1);
     HAL_Delay(500);
     LED0(1);
-    LED1(0);  
+    LED1(0);
+    HAL_Delay(500);
+    LED0(0);
+    LED1(0);
+    HAL_Delay(500);
+    LED0(1);
+    LED1(1);
   }
   /* USER CODE END 3 */
 }
