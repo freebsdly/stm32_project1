@@ -53,49 +53,18 @@ extern "C"
   /* Exported functions prototypes ---------------------------------------------*/
   void Error_Handler(void);
 
-/* USER CODE BEGIN EFP */
+  /* USER CODE BEGIN EFP */
 
-/* USER CODE END EFP */
+  /* USER CODE END EFP */
 
-/* Private defines -----------------------------------------------------------*/
-#define LED1_Pin GPIO_PIN_0
-#define LED1_GPIO_Port GPIOB
-
-#define LED0_Pin GPIO_PIN_1
-#define LED0_GPIO_Port GPIOB
+  /* Private defines -----------------------------------------------------------*/
 
 #define USART1_TX_Pin GPIO_PIN_9
 #define USART1_TX_GPIO_Port GPIOA
 #define USART1_RX_Pin GPIO_PIN_10
 #define USART1_RX_GPIO_Port GPIOA
 
-/* USER CODE BEGIN Private defines */
-
-/* LED 端口操作定义 */
-#define LED0(x)                                                                                                                   \
-  do                                                                                                                              \
-  {                                                                                                                               \
-    x ? HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_SET) : HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET); \
-  } while (0)
-
-#define LED1(x)                                                                                                                   \
-  do                                                                                                                              \
-  {                                                                                                                               \
-    x ? HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET) : HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET); \
-  } while (0) /* LED1 翻转 */
-
-/* LED 电平翻转定义 */
-#define LED0_TOGGLE()                             \
-  do                                              \
-  {                                               \
-    HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin); \
-  } while (0) /* LED0 = !LED0 */
-
-#define LED1_TOGGLE()                             \
-  do                                              \
-  {                                               \
-    HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin); \
-  } while (0) /* LED1 = !LED1 */
+  /* USER CODE BEGIN Private defines */
 
   /* USER CODE END Private defines */
 
