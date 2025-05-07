@@ -20,6 +20,11 @@ extern "C"
 #define KEYUP_Pin GPIO_PIN_0
 #define KEYUP_GPIO_Port GPIOA
 
+#define KEY0 HAL_GPIO_ReadPin(KEY0_GPIO_Port, KEY0_Pin)
+#define KEY1 HAL_GPIO_ReadPin(KEY1_GPIO_Port, KEY1_Pin)
+#define KEY2 HAL_GPIO_ReadPin(KEY2_GPIO_Port, KEY2_Pin)
+#define KEYUP HAL_GPIO_ReadPin(KEYUP_GPIO_Port, KEYUP_Pin)
+
 #ifdef __cplusplus
 }
 #endif
