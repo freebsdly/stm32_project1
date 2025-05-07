@@ -25,6 +25,49 @@ extern "C"
 #define KEY2 HAL_GPIO_ReadPin(KEY2_GPIO_Port, KEY2_Pin)
 #define KEYUP HAL_GPIO_ReadPin(KEYUP_GPIO_Port, KEYUP_Pin)
 
+#define KEY_UP_STATE 1
+#define KEY_DOWN_STATE 0
+#define WKUP_UP_STATE 0
+#define WKUP_DOWN_STATE 1
+
+#define KEY0_DOWN 1
+#define KEY1_DOWN 2
+#define KEY2_DOWN 3
+#define KEYUP_DOWN 4
+
+    /** 按键扫描 */
+    uint8_t key_scan(uint8_t mode)
+    {
+        /** 按键松开标志 */
+        static uint8_t key_up = 1;
+        uint8_t keyval = 0;
+        if (mode)
+            key_up = 1;
+
+        /* 支持连按 */
+        if ((key_up) && (KEY0 == KEY_DOWN_STATE || KEY1 == KEY_DOWN_STATE || KEY2 == KEY_DOWN_STATE || KEYUP == WKUP_DOWN_STATE))
+        {
+            /** 去抖动 */
+            HAL_Delay(10);
+            key_up = 0;
+
+            if (KEY0 == KEY_DOWN_STATE)
+                keyval = KEY0_DOWN;
+            if (KEY1 == KEY_DOWN_STATE)
+                keyval = KEY1_DOWN;
+            if (KEY2 == KEY_DOWN_STATE)
+                keyval = KEY2_DOWN;
+            if (KEYUP == WKUP_DOWN_STATE)
+                keyval = KEYUP_DOWN;
+        }
+        else if (KEY0 == KEY_UP_STATE && KEY1 == KEY_UP_STATE && KEY2 == KEY_UP_STATE && KEYUP == WKUP_UP_STATE)
+        {
+            key_up = 1;
+        }
+
+        return keyval;
+    }
+
 #ifdef __cplusplus
 }
 #endif

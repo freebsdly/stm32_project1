@@ -8,13 +8,11 @@ extern "C"
 
 #include "stm32f4xx_hal.h"
 
-
 #define LED1_Pin GPIO_PIN_0
 #define LED1_GPIO_Port GPIOB
 
 #define LED0_Pin GPIO_PIN_1
 #define LED0_GPIO_Port GPIOB
-
 
 /* LED 端口操作定义 */
 #define LED0(x)                                                                                                                  \
